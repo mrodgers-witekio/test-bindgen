@@ -1,8 +1,16 @@
 use std::env;
 use std::path::PathBuf;
 
+use bindgen::RustTarget;
+
 fn main() {
+    let target = match RustTarget::stable(75, 0) {
+        Ok(target) => target,
+        Err(_) => panic!("Invalid rust target"),
+    };
+
     let bindings = bindgen::Builder::default()
+        .rust_target(target)
         .header("wrapper.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()
