@@ -1,0 +1,8 @@
+[package]
+name = "test-bindgen"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/mrodgers-witekio/test-bindgen.git"
+
+[build-dependencies]
+bindgen = "0.71.1"
